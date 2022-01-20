@@ -1,3 +1,7 @@
+@extends('layouts.main')
+
+
+@section('content')
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -19,6 +23,12 @@
           @if ($errors->any())
               <div class="alert alert-danger">
                   RALAT! --- Sila Betulkan Input Anda !
+              </div>
+          @endif
+
+          @if (session('success'))
+              <div class="alert alert-success">
+                  BERJAYA! {{ session('success') }}
               </div>
           @endif
 
@@ -186,3 +196,4 @@
 </div> <!--- /container fluid --->
 </body>
 </html>
+@endsection

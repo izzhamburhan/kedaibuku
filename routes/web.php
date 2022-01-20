@@ -24,3 +24,4 @@ Route::get('/book', [ BookController::class,'index' ]);
 Route::view('/borang', 'borang.guru');
 
 Route::post('/borang', [GuruController::class,'store'] );
+
