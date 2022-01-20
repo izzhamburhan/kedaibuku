@@ -7,7 +7,7 @@
     <meta name="author" content="">
     
 
-    <title>Album example for Bootstrap</title>
+    <title>Contoh</title>
 
     <link rel="canonical" href="https://getbootstrap.com/docs/4.1/examples/album/">
 

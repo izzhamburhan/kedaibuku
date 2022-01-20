@@ -16,7 +16,11 @@
         <h3 class="mb-3">Borang Pendaftaran</h3>
 
 
-              <!-- s -->
+          @if ($errors->any())
+              <div class="alert alert-danger">
+                  RALAT! --- Sila Betulkan Input Anda !
+              </div>
+          @endif
 
 
         <form action="/borang" method="post">
@@ -91,8 +95,7 @@
 
               <label class="col-sm-5 col-md-4 col-lg-3 col-xl-2 mb-3 col-form-label">Jantina</label>
               <div class="col-sm-7 col-md-8 col-lg-3 col-xl-4">
-                
-              <div class="@error('jantina') is-invalid @enderror">
+                <div class="@error('jantina') is-invalid @enderror">
                   <div class="form-check form-check-inline pt-2">
                       <input class="form-check-input" type="radio" value="lelaki" name="jantina" @if(old('jantina')=='lelaki') checked @endif>
                       <label class="form-check-label" for="inlineRadio1">Lelaki</label>
@@ -102,34 +105,35 @@
                       <label class="form-check-label" for="inlineRadio2">Perempuan</label>
                     </div>
                   </div>
+                  <span class="invalid-feedback">Sila ketik jantina anda</span>
               </div>
-              <span class="invalid-feedback">Sila ketik jantina anda</span>
-
-
             </div>
 
             <div class="row">
-              <label class="col-sm-5 col-md-4 col-lg-3 col-xl-2 mb-3 col-form-label">Subjek Diajar</label>
-              <div class="col-sm-7 col-md-8 col-lg-4 col-xl-10">
-                <select class="form-select @error('subjek_diajar') is-invalid @enderror" aria-label="Default select example" nama="subjek_diajar">
-                  <option @if(old('subjek_diajar')=='') checked @endif>Pilih Subjek</option>
-                  <option @if(old('subjek_diajar')=='matematik') checked @endif value="matematik">Matematik</option>
-                  <option @if(old('subjek_diajar')=='sains') checked @endif value="sains">Sains</option>
-                  <option @if(old('subjek_diajar')=='data') checked @endif value="data">Data</option>
-                </select>
-                <span class="invalid-feedback">Sila pilih subjek</span>
-              </div>
 
-              <label class="col-sm-5 col-md-4 col-lg-2 col-xl-2 mb-3 col-form-label">Gred</label>
-              <div class="col-sm-7 col-md-8 col-lg-3 col-xl-10">
-                <select class="form-select @error('gred_guru') is-invalid @enderror" aria-label="Default select example" name="gred_guru">
-                  <option @if(old('gred_guru')=='') checked @endif >Pilih Gred</option>
-                  <option value="A" @if(old('gred_guru')=='A') checked @endif>A</option>
-                  <option value="B" @if(old('gred_guru')=='B') checked @endif>B</option>
-                  <option value="C"  @if(old('gred_guru')=='C') checked @endif>C</option>
-                </select>
-                <span class="invalid-feedback">Sila pilih gred</span>
-              </div>
+                <label class="col-sm-5 col-md-4 col-lg-2 col-xl-2 mb-3 col-form-label">Gred</label>
+                <div class="col-sm-7 col-md-8 col-lg-3 col-xl-10">
+                  <select class="form-select @error('subjek_diajar') is-invalid @enderror" aria-label="Default select example" name="subjek_diajar">
+                    <option value="" @if(old('subjek_diajar')=='') selected @endif>Pilih Subjek</option>
+                    <option value="matematik" @if(old('subjek_diajar')=='matematik') selected @endif>Matematik</option>
+                    <option value="sains" @if(old('subjek_diajar')=='sains') selected @endif>Sains</option>
+                    <option value="data" @if(old('subjek_diajar')=='data') selected @endif>Data</option>
+                  </select>
+                  <span class="invalid-feedback">Sila pilih subjek</span>
+                </div>
+
+
+                <label class="col-sm-5 col-md-4 col-lg-2 col-xl-2 mb-3 col-form-label">Gred</label>
+                <div class="col-sm-7 col-md-8 col-lg-3 col-xl-10">
+                  <select class="form-select @error('gred_guru') is-invalid @enderror" aria-label="Default select example" name="gred_guru">
+                    <option value="" @if(old('gred_guru')=='') selected @endif>Pilih Gred</option>
+                    <option value="A" @if(old('gred_guru')=='A') selected @endif>A</option>
+                    <option value="B" @if(old('gred_guru')=='B') selected @endif>B</option>
+                    <option value="C" @if(old('gred_guru')=='C') selected @endif>C</option>
+                  </select>
+                  <span class="invalid-feedback">Sila pilih gred</span>
+                </div>
+
             </div>
 
           </div>
@@ -141,10 +145,10 @@
           </div>
           <div class="card-body">
 
-            <div class="mb-3 row">
+          <div class="mb-3 row">
               <label class="col-sm-5 col-md-4 col-lg-3 col-xl-2 col-form-label">Nama Pengguna</label>
               <div class="col-sm-7 col-md-8 col-lg-9 col-xl-10">
-                <input type="text" class="form-control @error('username') is-invalid @enderror" nama="username" value="{{ old('username') }}">
+                <input type="text" class="form-control @error('username') is-invalid @enderror" name="username" value="{{ old('username') }}">
                 <span class="invalid-feedback">Sila isi nama pengguna</span>
               </div>
             </div>
@@ -152,25 +156,29 @@
             <div class="mb-3 row">
               <label class="col-sm-5 col-md-4 col-lg-3 col-xl-2 col-form-label">Kata Laluan</label>
               <div class="col-sm-7 col-md-8 col-lg-9 col-xl-10">
-                <input type="text" class="form-control @error('password') is-invalid @enderror" nama="password" value="{{ old('password') }}> 
-                <span class="invalid-feedback">Sila isi password</span>
+                <input type="text" class="form-control @error('password') is-invalid @enderror" name="password" value="{{ old('password') }}">
+                <span class="invalid-feedback">Sila isi kata laluan</span>
               </div>
             </div>
 
             <div class="form-check">
-              <input class="form-check-input @error('setuju') is-invalid @enderror" type="checkbox" value="setuju" name="setuju" id="flexCheckChecked"  >
+              <div class="@error('setuju') is-invalid @enderror">
+              <input class="form-check-input " type="checkbox" value="setuju" name="setuju" id="flexCheckChecked"  >
               <label class="form-check-label" for="flexCheckChecked">
                 Saya Bersetuju dengan syarat yang dikenakan
               </label>
+              </div>
               <span class="invalid-feedback">Sila ketik setuju</span>
             </div>
 
           </div>
-
-          <div class="text-center"> <button type="submit" class="btn btn-outline-secondary"> Submit </button> </div>
-      </form>
+     
+      
         </div>
+        <div class="text-center"> <button type="submit" class="btn btn-outline-secondary rounded"> Submit </button> </div>
+        </form>
       </div>
+     
      
     </div>
   </div>

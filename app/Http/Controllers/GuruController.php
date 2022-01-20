@@ -8,7 +8,7 @@ class GuruController extends Controller
 {
     public function store(Request $request){
         
-        // dd($request);
+       
         $validated_data = $request->validate([
 
                 "nama_sekolah" => ["required"],
@@ -25,5 +25,7 @@ class GuruController extends Controller
                 "password" => ["required"],
                 "setuju" => ['required'],
         ]);
+        dd($request);
+        echo "<h1>SEMUA OKEY</h1>";
     }
 }
