@@ -7,7 +7,7 @@
     <meta name="author" content="">
     
 
-    <title>Contoh</title>
+    <title>lalala</title>
 
     <link rel="canonical" href="https://getbootstrap.com/docs/4.1/examples/album/">
 
@@ -31,9 +31,8 @@
             <div class="col-sm-4 offset-md-1 py-4">
               <h4 class="text-white">Contact</h4>
               <ul class="list-unstyled">
-                <li><a href="https://twitter.com/izzham_ariff" class="text-white">Follow on Twitter</a></li>
-                <li><a href="#" class="text-white">Like on Facebook</a></li>
-                <li><a href="#" class="text-white">Email me</a></li>
+                <li><a href="/borang" class="text-white">Borang</a></li>
+                <li><a href="/book" class="text-white">Buku</a></li>
               </ul>
             </div>
           </div>

@@ -16,12 +16,11 @@ use App\Http\Controllers\GuruController;
 */
 
 Route::get('/', function () {
-    return view('welcome');
+     return view('welcome');
 });
 
 Route::get('/book', [ BookController::class,'index' ]);
 
 Route::view('/borang', 'borang.guru');
-
 Route::post('/borang', [GuruController::class,'store'] );
 
